@@ -1,0 +1,13 @@
+# Copy this to config.toml (next to the server binary, or pass a path as
+# the first CLI argument) and fill in your Baikal details.
+
+bind_addr = "127.0.0.1:8080"
+
+[baikal]
+base_url = "http://localhost"
+username = "alan"
+password = "changeme"
+# Path to the addressbook collection you want this server to manage.
+# Find it via your CardDAV client setup, typically:
+#   /dav.php/addressbooks/<username>/default/
+addressbook_path = "/dav.php/addressbooks/alan/default/"
