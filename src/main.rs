@@ -19,12 +19,14 @@ async fn main() -> anyhow::Result<()> {
         )
         .init();
 
-    let config_path = std::env::args()
-        .nth(1)
-        .map(PathBuf::from)
-        .unwrap_or_else(|| PathBuf::from("config.toml"));
-
-    let cfg = Config::load(&config_path)?;
+    let explicit_path = std::env::args().nth(1).map(PathBuf::from);
+    let cfg = match Config::load_default_or(explicit_path) {
+        Ok(cfg) => cfg,
+        Err(e) => {
+            eprintln!("{e:#}");
+            std::process::exit(1);
+        }
+    };
     let dav = CardDavClient::new(&cfg.baikal)?;
 
     let state = AppState { dav: Arc::new(dav) };

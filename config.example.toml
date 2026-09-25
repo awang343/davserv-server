@@ -1,5 +1,7 @@
-# Copy this to config.toml (next to the server binary, or pass a path as
-# the first CLI argument) and fill in your Baikal details.
+# davserv config. By default this is read from ~/.config/davserv/config.toml
+# (created automatically from this template on first run if missing) -
+# fill in your Baikal details and re-run. You can also pass a different
+# path as the first CLI argument.
 
 bind_addr = "127.0.0.1:8080"
 
